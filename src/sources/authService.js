@@ -11,12 +11,15 @@ async function login(username,password){
     const { data: jwt } = await http.post(authUrl,{email:username,password})
     localStorage.setItem(tokenKey, jwt);
 }
+
 function logout(){
     localStorage.removeItem(tokenKey);
 }
+
 function loginWithJwt(Jwt){
     localStorage.setItem(tokenKey, Jwt);
 }
+
 function getCurrentUser(){
     try {
         const jwt = localStorage.getItem(tokenKey);
@@ -28,6 +31,8 @@ function getCurrentUser(){
 function getJwt(){
     return localStorage.getItem(tokenKey);
 }
-export default {
+
+const auth ={
     login,logout,loginWithJwt,getCurrentUser,getJwt
 }
+export default auth;

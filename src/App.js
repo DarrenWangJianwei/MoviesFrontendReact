@@ -96,5 +96,3 @@ handleDecrement = (counter) =>{
 }
  
 export default App;
-
-

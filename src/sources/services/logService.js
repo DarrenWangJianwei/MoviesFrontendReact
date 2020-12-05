@@ -14,7 +14,9 @@ function log(error){
     Raven.captureException(error);
 }
 
-export default {
-    init,
-    log 
-}
+
+const logger = {
+  init,
+  log 
+} 
+export default logger;
