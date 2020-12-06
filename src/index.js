@@ -9,7 +9,7 @@ import {BrowserRouter} from 'react-router-dom'
 import logger from './sources/services/logService'
 
 
-//logger.init();
+logger.init();
 console.log(process.env.REACT_APP_NAME);
 
 ReactDOM.render(

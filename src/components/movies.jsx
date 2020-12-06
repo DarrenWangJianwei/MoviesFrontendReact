@@ -20,7 +20,7 @@ class Movies extends Component {
   async componentDidMount() {
     const { data: movies } = await getMovies();
     let { data: genres } = await getGenres();
-    genres = [{ name: "All Grenes" }, ...genres];
+    genres = [{ name: "All Genres" }, ...genres];
     this.setState({ movies: movies, allgenres: genres });
   }
 
