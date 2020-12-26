@@ -25,10 +25,32 @@ class MoviesTable extends Component {
     key: "delete",
     content: (m) => (
       <button
-        className="btn btn-danger btn-sm m-2"
+        className="btn btn-danger btn-sm"
         onClick={() => this.props.onDelete(m._id)}
       >
         Delete
+      </button>
+    ),
+  };
+  addButton = {
+    key: "add",
+    content: (m) => (
+      <button
+        className="btn btn-primary"
+        onClick={() => this.props.onAdd(m._id)}
+      >
+        Add
+      </button>
+    ),
+  };
+  removeButton = {
+    key: "remove",
+    content: (m) => (
+      <button
+        className="btn btn-danger"
+        onClick={() => this.props.onRemove(m._id)}
+      >
+        Remove
       </button>
     ),
   };
@@ -37,6 +59,9 @@ class MoviesTable extends Component {
     const user = Auth.getCurrentUser();
     if (user && user.isAdmin) {
       this.titlesArray.push(this.deleteButton);
+    } else {
+      this.titlesArray.push(this.addButton);
+      this.titlesArray.push(this.removeButton);
     }
   }
   showingMovies(moviesWithGenre) {

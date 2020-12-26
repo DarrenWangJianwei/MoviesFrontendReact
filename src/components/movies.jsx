@@ -44,6 +44,12 @@ class Movies extends Component {
       this.setState({ movies: originalMovies });
     }
   };
+  handleAdd = async (id) => {
+    console.log("add this movies");
+  };
+  handleRemove = async (id) => {
+    console.log("remove this movies");
+  };
 
   handlePageChange = (page) => {
     this.setState({ currentPage: page });
@@ -119,6 +125,8 @@ class Movies extends Component {
             movies={movies}
             onLike={this.handleToggle}
             onDelete={this.handleDelete}
+            onAdd={this.handleAdd}
+            onRemove={this.handleRemove}
             sortColumn={sortColumn}
             onSort={this.handleSort}
             sortMovies={sortMovies}

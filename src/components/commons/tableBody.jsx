@@ -13,6 +13,9 @@ class TableBody extends Component {
   createKey(r, c) {
     return r._id + (c.name || c.key);
   }
+  createClassName(r, c) {
+    if (c.key === "add" || c.key === "remove") return "removeCellMargin";
+  }
   render() {
     const { data, titlesArray } = this.props;
     return (
@@ -21,7 +24,12 @@ class TableBody extends Component {
           {data.map((r) => (
             <tr key={r._id}>
               {titlesArray.map((c) => (
-                <td key={this.createKey(r, c)}>{this.renderCell(r, c)}</td>
+                <td
+                  key={this.createKey(r, c)}
+                  className={this.createClassName(r, c)}
+                >
+                  {this.renderCell(r, c)}
+                </td>
               ))}
             </tr>
           ))}
