@@ -20,12 +20,8 @@ import http from './services/httpService'
     return http.post(config.apiRentalsEndPoint,userAndMovie);     
   }
   export function deleteRentals(userId,movieId){
-    const userAndMovie = {};
-    userAndMovie.userId = userId;
-    userAndMovie.movieId = movieId;
-    console.log('userAndMovie',userAndMovie);
     const deleteEndPoint = config.apiRentalsEndPoint+"/"+userId+"/"+movieId;
-    return http.delete(deleteEndPoint,userAndMovie);    
+    return http.delete(deleteEndPoint);    
   }
   export function deleteRentalsById(rentalId){
     return http.delete(rentalsUrl(rentalId));    
