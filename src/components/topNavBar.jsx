@@ -26,8 +26,8 @@ class TopNavBar extends Component {
             <NavLink className="nav-item nav-link" to="/movies">
               Movies
             </NavLink>
-            <NavLink className="nav-item nav-link" to="/customers">
-              Customers
+            <NavLink className="nav-item nav-link" to="/customer">
+              Customer
             </NavLink>
             <NavLink className="nav-item nav-link" to="/rentals">
               Rentals

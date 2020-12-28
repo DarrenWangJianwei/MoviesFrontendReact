@@ -4,7 +4,7 @@ import auth from "../sources/authService";
 import Form from "./commons/form";
 import Joi from "joi-browser";
 import { updateCustomer } from "../sources/customerService";
-class Customers extends Form {
+class Customer extends Form {
   state = {
     data: {
       name: "",
@@ -72,4 +72,4 @@ class Customers extends Form {
   }
 }
 
-export default Customers;
+export default Customer;

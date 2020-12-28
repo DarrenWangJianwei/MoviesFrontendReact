@@ -7,7 +7,7 @@ import {Route,Switch,Redirect} from 'react-router-dom';
 // import Counters from './components/counters'
 // import {getMovies} from './sources/fakeMovieService'
 import Movies from './components/movies';
-import Customers from './components/customers';
+import Customer from './components/customer';
 import Rentals from './components/Rentals';
 import NotFound from './components/notFound';
 import TopNavBar from './components/topNavBar';
@@ -66,7 +66,7 @@ handleDecrement = (counter) =>{
             <Route path="/rentals" component={Rentals} />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
-            <Route path="/customers" component={Customers} />
+            <Route path="/customer" component={Customer} />
             <Route path="/movies" exact 
               render={props => <Movies {...props} user={this.state.user}/>} />
             <ProtectedRoute path="/movies/:id" component={MoviesForm} />
