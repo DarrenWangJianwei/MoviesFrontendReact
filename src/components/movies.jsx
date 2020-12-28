@@ -6,7 +6,9 @@ import GenresNav from "./genresNav";
 import _ from "lodash";
 import { getMovies, deleteMovie } from "../sources/movieService";
 import { getGenres } from "../sources/genreService";
+import { addRentals, deleteRentals } from "../sources/rentalService";
 import { toast } from "react-toastify";
+import auth from "../sources/authService";
 class Movies extends Component {
   state = {
     movies: [],
@@ -45,10 +47,41 @@ class Movies extends Component {
     }
   };
   handleAdd = async (id) => {
-    console.log("add this movies");
+    try {
+      const movieId = id;
+      const { _id: userId } = auth.getCurrentUser();
+      const { data: rental } = await addRentals(userId, movieId);
+      const movies = this.state.movies;
+      for (let m of movies) {
+        if (m._id === rental.movie._id) {
+          m.numberInStock -= 1;
+        }
+      }
+      this.setState({ movies });
+    } catch (err) {
+      if (err.response && err.response.status === 400) toast.error(err.message);
+      else if (err.response && err.response.status === 500)
+        toast.error("Transaction failed");
+      else toast.error("Unknow reason");
+    }
   };
   handleRemove = async (id) => {
-    console.log("remove this movies");
+    try {
+      const movieId = id;
+      const { _id: userId } = auth.getCurrentUser();
+      const { data: rental } = await deleteRentals(userId, movieId);
+      const movies = this.state.movies;
+      for (let m of movies) {
+        if (m._id === rental.movie._id) {
+          m.numberInStock += 1;
+        }
+      }
+      this.setState({ movies });
+    } catch (err) {
+      if (err.response && err.response.status === 400)
+        toast.error("Can't find this movie to remove");
+      else toast.error(err.message);
+    }
   };
 
   handlePageChange = (page) => {

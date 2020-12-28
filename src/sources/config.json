@@ -3,5 +3,6 @@
     "apiGenresEndPoint":"/genres",
     "apiUserEndPoint":"/users",
     "apiAuthEndPoint":"/auth",
-    "apiCustomersEndPoint":"/customers"
+    "apiCustomersEndPoint":"/customers",
+    "apiRentalsEndPoint":"/rentals"
 }
