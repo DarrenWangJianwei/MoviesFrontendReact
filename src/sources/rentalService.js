@@ -16,7 +16,6 @@ import http from './services/httpService'
     const userAndMovie = {};
     userAndMovie.userId = userId;
     userAndMovie.movieId = movieId;
-    console.log('userAndMovie',userAndMovie);
     return http.post(config.apiRentalsEndPoint,userAndMovie);     
   }
   export function deleteRentals(userId,movieId){
