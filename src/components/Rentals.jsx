@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
+import { getRentals, deleteRentalsById } from "./../sources/rentalService";
 import auth from "../sources/authService";
-import { getRentals } from "./../sources/rentalService";
-
 class Rentals extends Component {
   state = {
     data: [],
@@ -27,7 +27,6 @@ class Rentals extends Component {
     for (let r of data) {
       prices[r._id] = 0;
     }
-    console.log(prices);
     this.setState({ data, prices, isGold });
   }
   handleChange = ({ currentTarget: input }) => {
@@ -46,6 +45,24 @@ class Rentals extends Component {
     }
     this.setState({ total });
   }
+  onRemove = async (id) => {
+    const originalRentals = this.state.data;
+    const rentals = originalRentals.filter((r) => r._id !== id.toString());
+    const originalPrices = this.state.prices;
+    var prices = this.state.prices;
+    delete prices[id];
+    this.setState({ data: rentals, prices });
+    this.sumPrices();
+    try {
+      await deleteRentalsById(id);
+    } catch (err) {
+      if (err.response && err.response.status === 404)
+        toast.error("This movie has already been deleted!");
+
+      this.setState({ movies: originalRentals, prices: originalPrices });
+      this.sumPrices();
+    }
+  };
   render() {
     return (
       <div className="rentalsTable">
@@ -76,6 +93,14 @@ class Rentals extends Component {
                   />
                 </td>
                 <td>{this.state.prices[r._id]}</td>
+                <td>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => this.onRemove(r._id)}
+                  >
+                    Remove
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
