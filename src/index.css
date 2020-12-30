@@ -33,7 +33,8 @@ code {
   margin-right: auto;
   width: 50%;
 }
-.rentalsTable {
+.rentalsTable,
+.customersTable {
   margin-left: auto;
   margin-right: auto;
   width: 50%;

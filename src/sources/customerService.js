@@ -15,11 +15,13 @@ import http from './services/httpService'
     return http.put(customerUrl(customer.user),customer);     
   }
 
-  export function addNewCustomer(user){
-
-
+  export function saveChangedAndRemoved(removed,changed){
+    const collections = {};
+    collections.removed = removed;
+    collections.changed = changed;
+    const changeEndPoint = `${config.apiCustomersEndPoint}/change`
+    return http.post(changeEndPoint,collections)
   }
-  
 //   export function saveCustomer(user) {
 //       if(!user._id){
 //         return http.post(config.apiMoviesEndPoint,user);

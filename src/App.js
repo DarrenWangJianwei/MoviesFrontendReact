@@ -8,6 +8,7 @@ import {Route,Switch,Redirect} from 'react-router-dom';
 // import {getMovies} from './sources/fakeMovieService'
 import Movies from './components/movies';
 import Customer from './components/customer';
+import Customers from './components/customers';
 import Rentals from './components/Rentals';
 import NotFound from './components/notFound';
 import TopNavBar from './components/topNavBar';
@@ -67,6 +68,7 @@ handleDecrement = (counter) =>{
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
             <Route path="/customer" component={Customer} />
+            <Route path="/customers" component={Customers}/>
             <Route path="/movies" exact 
               render={props => <Movies {...props} user={this.state.user}/>} />
             <ProtectedRoute path="/movies/:id" component={MoviesForm} />

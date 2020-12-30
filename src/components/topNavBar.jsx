@@ -26,9 +26,11 @@ class TopNavBar extends Component {
             <NavLink className="nav-item nav-link" to="/movies">
               Movies
             </NavLink>
-            <NavLink className="nav-item nav-link" to="/customer">
-              Customer
-            </NavLink>
+            {user && user.isAdmin && (
+              <NavLink className="nav-item nav-link" to="/customers">
+                Customers
+              </NavLink>
+            )}
             <NavLink className="nav-item nav-link" to="/rentals">
               Rentals
             </NavLink>
@@ -44,7 +46,7 @@ class TopNavBar extends Component {
             )}
             {user && (
               <React.Fragment>
-                <NavLink className="nav-item nav-link" to="/profile">
+                <NavLink className="nav-item nav-link" to="/customer">
                   {user.name}
                 </NavLink>
                 <NavLink className="nav-item nav-link" to="/logout">
