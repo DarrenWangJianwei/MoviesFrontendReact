@@ -17,6 +17,9 @@ import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
+state = {
+  user:{}
+}
 
 componentDidMount() {
     const user = auth.getCurrentUser()
