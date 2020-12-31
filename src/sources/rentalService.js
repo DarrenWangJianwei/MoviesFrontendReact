@@ -4,6 +4,7 @@ import http from './services/httpService'
   function rentalsUrl(rentalId){
     return `${config.apiRentalsEndPoint}/${rentalId}`;
   }
+
   export function getAllRentals() {
     return http.get(config.apiRentalsEndPoint);
   }
@@ -18,10 +19,13 @@ import http from './services/httpService'
     userAndMovie.movieId = movieId;
     return http.post(config.apiRentalsEndPoint,userAndMovie);     
   }
+
   export function deleteRentals(userId,movieId){
     const deleteEndPoint = config.apiRentalsEndPoint+"/"+userId+"/"+movieId;
     return http.delete(deleteEndPoint);    
   }
+
   export function deleteRentalsById(rentalId){
     return http.delete(rentalsUrl(rentalId));    
   }
+  

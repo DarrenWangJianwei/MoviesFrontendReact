@@ -1,8 +1,10 @@
 import config from './config.json'
 import http from './services/httpService'
+  
   function movieUrl(id){
     return `${config.apiMoviesEndPoint}/${id}`;
   }
+
   export function getMovies() {
     return http.get(config.apiMoviesEndPoint);
   }
@@ -24,4 +26,5 @@ import http from './services/httpService'
   export async function deleteMovie(id) {
       return http.delete(movieUrl(id))
   }
+  
   

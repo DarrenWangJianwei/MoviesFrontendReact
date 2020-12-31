@@ -5,8 +5,11 @@ import PropTypes from "prop-types";
 const Pagination = (props) => {
   const { totalNumber, pageSize, currentPage, handlePageChange } = props;
   const pageNumber = Math.ceil(totalNumber / pageSize);
+
   if (pageNumber === 1) return null;
+
   const pages = _.range(1, pageNumber + 1);
+
   return (
     <ul className="pagination">
       {pages.map((page) => {
@@ -27,6 +30,7 @@ const Pagination = (props) => {
     </ul>
   );
 };
+
 Pagination.propTypes = {
   totalNumber: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,

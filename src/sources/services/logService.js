@@ -14,7 +14,6 @@ function log(error){
     Raven.captureException(error);
 }
 
-
 const logger = {
   init,
   log 

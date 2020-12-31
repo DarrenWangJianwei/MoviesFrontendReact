@@ -7,6 +7,7 @@ class Form extends Component {
     data: {},
     errors: {},
   };
+
   validate = () => {
     //abortEarly : fasle will return all of errors.
     const result = Joi.validate(this.state.data, this.schema, {
@@ -19,26 +20,26 @@ class Form extends Component {
 
     return errors;
   };
-  // obj = {[name]:valie}, since we need the name as a key dynamic(username or password). need be destructed into a object.
+
   validateProperty = ({ name, value }) => {
     const obj = { [name]: value };
     const schema = { [name]: this.schema[name] };
     const { error } = Joi.validate(obj, schema);
     return error ? error.details[0].message : null;
   };
+
   handleSubmit = (e) => {
     e.preventDefault();
     const error = this.validate();
     this.setState({ errors: error || {} });
     if (error) return;
-    //calling the children class doSubmit method in order to push the data into database respectively.
     this.doSubmit(e);
   };
 
-  //shortcut, e.currentTarget
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
     const errorsMessage = this.validateProperty(input);
+
     if (errorsMessage) errors[input.name] = errorsMessage;
     else delete errors[input.name];
 

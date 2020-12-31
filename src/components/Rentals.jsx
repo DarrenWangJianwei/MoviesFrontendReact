@@ -9,6 +9,7 @@ class Rentals extends Component {
     total: 0,
     isGold: false,
   };
+
   titlesArray = [
     { name: "title", label: "Title" },
     { name: "dailyRentalRate", label: "Rate($/day)" },
@@ -29,6 +30,7 @@ class Rentals extends Component {
     }
     this.setState({ data, prices, isGold });
   }
+
   handleChange = ({ currentTarget: input }) => {
     const sum = input.value * input.getAttribute("data-rate");
     const prices = this.state.prices;
@@ -37,6 +39,7 @@ class Rentals extends Component {
     this.setState({ prices });
     this.sumPrices();
   };
+
   sumPrices() {
     const prices = this.state.prices;
     let total = 0;
@@ -45,6 +48,7 @@ class Rentals extends Component {
     }
     this.setState({ total });
   }
+
   onRemove = async (id) => {
     const originalRentals = this.state.data;
     const rentals = originalRentals.filter((r) => r._id !== id.toString());
@@ -63,6 +67,7 @@ class Rentals extends Component {
       this.sumPrices();
     }
   };
+
   render() {
     return (
       <div className="rentalsTable">

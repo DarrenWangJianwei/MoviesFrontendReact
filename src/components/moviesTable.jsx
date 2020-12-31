@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Table from "./commons/table";
-import Like from "./like";
 import SearchInput from "./commons/searchInput";
+import Like from "./like";
 import Auth from "../sources/authService";
 class MoviesTable extends Component {
   titlesArray = [
@@ -21,6 +21,7 @@ class MoviesTable extends Component {
       ),
     },
   ];
+
   deleteButton = {
     key: "delete",
     content: (m) => (
@@ -32,6 +33,7 @@ class MoviesTable extends Component {
       </button>
     ),
   };
+
   addButton = {
     key: "add",
     content: (m) => (
@@ -43,6 +45,7 @@ class MoviesTable extends Component {
       </button>
     ),
   };
+
   removeButton = {
     key: "remove",
     content: (m) => (
@@ -54,6 +57,7 @@ class MoviesTable extends Component {
       </button>
     ),
   };
+
   constructor() {
     super();
     const user = Auth.getCurrentUser();
@@ -64,6 +68,7 @@ class MoviesTable extends Component {
       this.titlesArray.push(this.removeButton);
     }
   }
+
   showingMovies(moviesWithGenre) {
     return moviesWithGenre.length === 0 ? (
       <p>There are no movies in the database.</p>

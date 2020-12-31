@@ -5,6 +5,7 @@ class Logout extends Component {
     auth.logout();
     window.location = "/";
   }
+
   render() {
     return null;
   }

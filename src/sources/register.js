@@ -11,3 +11,4 @@ export function registerNewUser(user){
         name: user.name
     });
 }
+

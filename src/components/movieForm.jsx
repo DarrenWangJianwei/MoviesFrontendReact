@@ -1,6 +1,6 @@
 import React from "react";
-import Form from "./commons/form";
 import Joi from "joi-browser";
+import Form from "./commons/form";
 import { getGenres } from "../sources/genreService";
 import { getMovie, saveMovie } from "../sources/movieService";
 
@@ -15,6 +15,7 @@ class MoviesForm extends Form {
     genresCollection: [],
     errors: {},
   };
+
   schema = {
     title: Joi.string().required().label("Title"),
     numberInStock: Joi.number().min(0).max(100).required().label("Stock"),
@@ -22,10 +23,12 @@ class MoviesForm extends Form {
     genreId: Joi.string().required().label("Genre"),
     _id: Joi.string().label("ID"),
   };
+
   async populateGenres() {
     const { data: genresCollection } = await getGenres();
     this.setState({ genresCollection });
   }
+
   async populateMovie() {
     try {
       const movieID = this.props.match.params.id;
@@ -39,10 +42,12 @@ class MoviesForm extends Form {
       }
     }
   }
+
   async componentDidMount() {
     await this.populateGenres();
     await this.populateMovie();
   }
+
   mapToViewModel(movie) {
     return {
       _id: movie._id,

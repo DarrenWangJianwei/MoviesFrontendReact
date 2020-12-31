@@ -6,6 +6,7 @@ import {
 } from "../sources/customerService";
 import Form from "./commons/form";
 import _ from "lodash";
+
 class Customers extends Form {
   state = {
     data: [],
@@ -14,6 +15,7 @@ class Customers extends Form {
     changed: [],
     removed: [],
   };
+
   titlesArray = [
     { name: "account", label: "Account" },
     { name: "name", label: "Name" },
@@ -26,6 +28,7 @@ class Customers extends Form {
     const reset = _.cloneDeep(data);
     this.setState({ data, reset });
   }
+
   onChangeIsGold = (c, { currentTarget: input }) => {
     const customers = this.state.data;
     const index = customers.indexOf(c);
@@ -34,11 +37,13 @@ class Customers extends Form {
     changed.push(customers[index]);
     this.setState({ data: customers, changed });
   };
+
   onReset = () => {
     const reset = this.state.reset;
     const data = _.cloneDeep(reset);
     this.setState({ data });
   };
+
   onRemove = (c) => {
     const customers = this.state.data;
     const index = customers.indexOf(c);
@@ -47,6 +52,7 @@ class Customers extends Form {
     delete customers[index];
     this.setState({ data: customers, removed });
   };
+
   onSave = async () => {
     try {
       await saveChangedAndRemoved(this.state.removed, this.state.changed);
@@ -56,6 +62,7 @@ class Customers extends Form {
         toast.error(err.response.data);
     }
   };
+
   render() {
     return (
       <div className="customersTable">

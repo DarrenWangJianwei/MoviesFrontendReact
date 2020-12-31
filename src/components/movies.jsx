@@ -1,13 +1,13 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
+import _ from "lodash";
 import MoviesTable from "./moviesTable";
+import GenresNav from "./genresNav";
 import Pagination from "./pagination";
 import { paginate } from "../utils/paginate";
-import GenresNav from "./genresNav";
-import _ from "lodash";
 import { getMovies, deleteMovie } from "../sources/movieService";
 import { getGenres } from "../sources/genreService";
 import { addRentals, deleteRentals } from "../sources/rentalService";
-import { toast } from "react-toastify";
 import auth from "../sources/authService";
 class Movies extends Component {
   state = {
@@ -19,6 +19,7 @@ class Movies extends Component {
     sortColumn: { path: "title", order: "asc" },
     searchInput: "",
   };
+
   async componentDidMount() {
     const { data: movies } = await getMovies();
     let { data: genres } = await getGenres();
@@ -32,6 +33,7 @@ class Movies extends Component {
     movies[indexOfMovie].like = movies[indexOfMovie].like ? false : true;
     this.setState({ movies });
   };
+
   handleDelete = async (id) => {
     const originalMovies = this.state.movies;
     const movies = originalMovies.filter((m) => m._id !== id.toString());
@@ -46,6 +48,7 @@ class Movies extends Component {
       this.setState({ movies: originalMovies });
     }
   };
+
   handleAdd = async (id) => {
     try {
       const movieId = id;
@@ -66,6 +69,7 @@ class Movies extends Component {
       else toast.error("Unknow reason");
     }
   };
+
   handleRemove = async (id) => {
     try {
       const movieId = id;
@@ -88,6 +92,7 @@ class Movies extends Component {
   handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
+
   handleGenreSelect = (selectedItem) => {
     this.setState({
       selectedGenre: selectedItem,
@@ -95,9 +100,11 @@ class Movies extends Component {
       searchInput: "",
     });
   };
+
   handleSort = (sortColumn) => {
     this.setState({ sortColumn });
   };
+
   //since in the SearchInput component, we declear the onChange method return e.currentTarget.value directly.
   handleSearchChange = (value) => {
     this.setState({
@@ -106,6 +113,7 @@ class Movies extends Component {
       currentPage: 1,
     });
   };
+
   getPageData() {
     const {
       pageSize,
@@ -135,6 +143,7 @@ class Movies extends Component {
     const movies = paginate(sortMovies, currentPage, pageSize);
     return [movies, sortMovies];
   }
+
   render() {
     const {
       pageSize,

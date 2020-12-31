@@ -26,4 +26,5 @@ GenresNav.defaultProps = {
   textProperty: "name",
   valueProperty: "_id",
 };
+
 export default GenresNav;

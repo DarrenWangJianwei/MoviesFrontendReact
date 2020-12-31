@@ -1,10 +1,10 @@
 import React from "react";
-import auth from "../../sources/authService";
 import { Redirect, Route } from "react-router-dom";
+import auth from "../../sources/authService";
 
 const ProtectedRoute = (props) => {
-  console.log("ProtectedRouteProps", props);
   const { component: Component, render, ...rest } = props;
+
   return (
     <Route
       {...rest}
@@ -18,8 +18,6 @@ const ProtectedRoute = (props) => {
               }}
             />
           );
-        //if component is Component return Component,
-        //if it is stateless component(function), render the function with props.
         return Component ? <Component {...props} /> : render(props);
       }}
     />

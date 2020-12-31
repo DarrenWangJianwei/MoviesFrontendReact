@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 class TopNavBar extends Component {
-  state = {};
   render() {
     const { user } = this.props;
     return (

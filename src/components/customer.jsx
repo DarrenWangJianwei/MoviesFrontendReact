@@ -1,9 +1,9 @@
 import React from "react";
-import { getCustomer } from "../sources/customerService";
-import auth from "../sources/authService";
-import Form from "./commons/form";
 import Joi from "joi-browser";
-import { updateCustomer } from "../sources/customerService";
+import Form from "./commons/form";
+import { updateCustomer, getCustomer } from "../sources/customerService";
+import auth from "../sources/authService";
+
 class Customer extends Form {
   state = {
     data: {
@@ -21,6 +21,7 @@ class Customer extends Form {
     provinceCollection: [],
     errors: {},
   };
+
   schema = {
     name: Joi.string().label("name"),
     email: Joi.string().label("email"),
@@ -33,6 +34,7 @@ class Customer extends Form {
     _id: Joi.string().label("ID"),
     user: Joi.string().label("userId"),
   };
+
   async componentDidMount() {
     const user = await auth.getCurrentUser();
     console.log(user._id);
@@ -40,6 +42,7 @@ class Customer extends Form {
     console.log(data);
     this.setState({ data });
   }
+
   doSubmit = async () => {
     await updateCustomer(this.state.data);
     this.props.history.push("/movies");

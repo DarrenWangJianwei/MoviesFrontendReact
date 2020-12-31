@@ -5,3 +5,4 @@ import config from './config.json'
     const genres = http.get(config.apiGenresEndPoint);
     return genres;
   }
+  

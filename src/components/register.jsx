@@ -1,6 +1,6 @@
 import React from "react";
-import Form from "./commons/form";
 import Joi from "joi-browser";
+import Form from "./commons/form";
 import * as RegisterUser from "../sources/register";
 import auth from "../sources/authService";
 class Register extends Form {
@@ -12,6 +12,7 @@ class Register extends Form {
     },
     errors: {},
   };
+
   schema = {
     username: Joi.string()
       .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
@@ -34,6 +35,7 @@ class Register extends Form {
       }
     }
   };
+
   render() {
     return (
       <div id="login">

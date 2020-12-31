@@ -35,4 +35,6 @@ function getJwt(){
 const auth ={
     login,logout,loginWithJwt,getCurrentUser,getJwt
 }
+
 export default auth;
+

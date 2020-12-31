@@ -1,11 +1,7 @@
-
-import './App.css';
 import React, { Component } from 'react';
 import { ToastContainer} from 'react-toastify';
 import {Route,Switch,Redirect} from 'react-router-dom';
-// import NavBar from './components/navBar'
-// import Counters from './components/counters'
-// import {getMovies} from './sources/fakeMovieService'
+import ProtectedRoute from './components/commons/protectedRoute';
 import Movies from './components/movies';
 import Customer from './components/customer';
 import Customers from './components/customers';
@@ -17,18 +13,11 @@ import Login from './components/login'
 import Register from './components/register';
 import Logout from './components/logout';
 import auth from './sources/authService';
+import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
-import ProtectedRoute from './components/commons/protectedRoute';
 
 class App extends Component {
-  state = { 
-    // counters: [
-    //     {id:1,value:4},
-    //     {id:2,value:0},
-    //     {id:3,value:0},
-    //     {id:4,value:0}
-    // ],
- };
+
 componentDidMount() {
     const user = auth.getCurrentUser()
     this.setState({user});
@@ -38,10 +27,12 @@ handleDelete = (counterID) =>{
     const counters = this.state.counters.filter(c => c.id !== counterID);
     this.setState({counters : counters})
 }
+
 handleReset = () =>{
     const counters = this.state.counters.map(c=>{c.value = 0; return c})
     this.setState({ counters });
 }
+
 handleIncrement = (counter) =>{
     const counters = [...this.state.counters];
     const indexOfCounter = counters.indexOf(counter);
@@ -49,6 +40,7 @@ handleIncrement = (counter) =>{
     counters[indexOfCounter].value += 1;
     this.setState({counters});
 }
+
 handleDecrement = (counter) =>{
       const counters = [...this.state.counters];
       const indexOfCounter = counters.indexOf(counter);
@@ -80,21 +72,9 @@ handleDecrement = (counter) =>{
           </Switch>
         </div>
       </div>     
-      /* <NavBar
-         totalCounters = {this.state.counters.filter(c=>c.value>0).length}
-      /> */
-      // <main className="container">
-      //   {/* <Counters 
-      //     counters = {this.state.counters}
-      //     onDelete = {this.handleDelete}
-      //     onDecrement = {this.handleDecrement}
-      //     onIncrement = {this.handleIncrement}
-      //     onReset = {this.handleReset}
-        
-      //   /> */}
-      // </main>
       );
   }
 }
  
 export default App;
+

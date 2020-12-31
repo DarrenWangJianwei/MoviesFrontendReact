@@ -1,5 +1,6 @@
 import config from './config.json'
 import http from './services/httpService'
+
   function customerUrl(user_id){
     return `${config.apiCustomersEndPoint}/${user_id}`;
   }
@@ -22,12 +23,3 @@ import http from './services/httpService'
     const changeEndPoint = `${config.apiCustomersEndPoint}/change`
     return http.post(changeEndPoint,collections)
   }
-//   export function saveCustomer(user) {
-//       if(!user._id){
-//         return http.post(config.apiMoviesEndPoint,user);
-//       }else{
-//         const movieRemoveId = {...movie};
-//         delete movieRemoveId._id;
-//         return http.put(customerUrl(movie._id), movieRemoveId)
-//       }
-//   }

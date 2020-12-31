@@ -95,3 +95,4 @@ export function deleteMovie(id) {
   movies.splice(movies.indexOf(movieInDb), 1);
   return movieInDb;
 }
+
