@@ -66,7 +66,9 @@ class Movies extends Component {
         toast.error(err.response.data);
       } else if (err.response && err.response.status === 500)
         toast.error("Transaction failed");
-      else toast.error("Unknow reason");
+      else {
+        toast.error(err.response.data);
+      }
     }
   };
 
