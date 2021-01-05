@@ -5,7 +5,7 @@ import ProtectedRoute from './components/commons/protectedRoute';
 import Movies from './components/movies';
 import Customer from './components/customer';
 import Customers from './components/customers';
-import Rentals from './components/Rentals';
+import Rentals from './components/rentals';
 import NotFound from './components/notFound';
 import TopNavBar from './components/topNavBar';
 import MoviesForm from './components/movieForm'

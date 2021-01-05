@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { toast } from "react-toastify";
-import { getRentals, deleteRentalsById } from "./../sources/rentalService";
+import { getRentals, deleteRentalsById } from "../sources/rentalService";
 import auth from "../sources/authService";
 class Rentals extends Component {
   state = {
