@@ -1,13 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import { toast } from "react-toastify";
 import {
   getCustomers,
   saveChangedAndRemoved,
 } from "../sources/customerService";
-import Form from "./commons/form";
 import _ from "lodash";
 
-class Customers extends Form {
+class Customers extends Component {
   state = {
     data: [],
     reset: [],

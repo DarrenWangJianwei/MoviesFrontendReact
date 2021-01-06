@@ -12,7 +12,7 @@ import auth from "../sources/authService";
 class Movies extends Component {
   state = {
     movies: [],
-    allgenres: [],
+    allGenres: [],
     pageSize: 4,
     currentPage: 1,
     selectedGenre: {},
@@ -24,7 +24,7 @@ class Movies extends Component {
     const { data: movies } = await getMovies();
     let { data: genres } = await getGenres();
     genres = [{ name: "All Genres" }, ...genres];
-    this.setState({ movies: movies, allgenres: genres });
+    this.setState({ movies: movies, allGenres: genres });
   }
 
   handleToggle = (movie) => {
@@ -150,7 +150,7 @@ class Movies extends Component {
     const {
       pageSize,
       currentPage,
-      allgenres,
+      allGenres,
       selectedGenre,
       sortColumn,
       searchInput,
@@ -160,7 +160,7 @@ class Movies extends Component {
       <div className="row">
         <div className="col-3">
           <GenresNav
-            genres={allgenres}
+            genres={allGenres}
             selectedItem={selectedGenre}
             onItemSelect={this.handleGenreSelect}
           />

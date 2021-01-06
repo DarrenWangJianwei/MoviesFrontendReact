@@ -63,7 +63,7 @@ class MoviesTable extends Component {
     const user = Auth.getCurrentUser();
     if (user && user.isAdmin) {
       this.titlesArray.push(this.deleteButton);
-    } else {
+    } else if (user) {
       this.titlesArray.push(this.addButton);
       this.titlesArray.push(this.removeButton);
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ToastContainer} from 'react-toastify';
 import {Route,Switch,Redirect} from 'react-router-dom';
 import ProtectedRoute from './components/commons/protectedRoute';
+import AdminProtectedRoute from './components/commons/adminProtectedRoute';
 import Movies from './components/movies';
 import Customer from './components/customer';
 import Customers from './components/customers';
@@ -59,17 +60,17 @@ handleDecrement = (counter) =>{
         <ToastContainer />
         <div className="Route">
           <Switch>
-            <Route path="/rentals" component={Rentals} />
+            <ProtectedRoute path="/rentals" component={Rentals} />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
             <Route path="/customer" component={Customer} />
-            <Route path="/customers" component={Customers}/>
+            <AdminProtectedRoute path="/customers" component={Customers}/>
             <Route path="/movies" exact 
               render={props => <Movies {...props} user={this.state.user}/>} />
             <ProtectedRoute path="/movies/:id" component={MoviesForm} />
             <Route path="/not-found" exact component={NotFound}/>
             <Route path="/register" component={Register} />
-            <Route path="/movies/new" component={MoviesForm} />
+            <ProtectedRoute path="/movies/new" component={MoviesForm} />
             <Redirect from="/" exact to="movies" />
             <Redirect to="/not-found"/>
           </Switch>
